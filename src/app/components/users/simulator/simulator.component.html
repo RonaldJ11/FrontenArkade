@@ -1,0 +1,71 @@
+<div class=" sim container-fluid mt-4">
+    <br>
+    <h2>Tipo de credito:</h2>
+    <select class="form-control form-control-lg mt-1" [(ngModel)]="typeCredit" (change)="updatePage()">
+        <option *ngFor="let typeCredit of typesCreditsList" [value]=typeCredit.name >{{typeCredit.name}}</option>
+    </select>
+    <hr>
+    <div class="container row">
+        <form class="col-md-7">
+            <div class="form-group  row">
+                <label for="value" class="col-4 col-form-label">Valor Credito</label>
+                <div class="col-8">
+                    <div class="input-group">
+                        <input id="value" name="value" type="number" [(ngModel)]="creditValue" class="form-control" (change)="getCreditValue()" required="required">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Cuotas" class="col-4 col-form-label">Cuotas Mensuales</label>
+                <div class="col-8">
+                    <div class="input-group">
+                        <input id="Cuotas" name="Cuotas" type="number" [(ngModel)]="numberInstallments" class="form-control" (change)="getCreditValue()" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="text" class="col-4 col-form-label">Tasa de Interes</label>
+                <div class="col-8">
+                    <input id="text" name="text" type="text" [(ngModel)]="interestRate" class="form-control" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="text1" class="col-4 col-form-label">Cuota Mensual</label>
+                <div class="col-8">
+                    <input id="text1" name="text1" type="text" class="form-control" value="{{valueInstallments}}" readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="offset-4 col-8">
+                    <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-4 offset-1 mt-4">
+            <div class="d-none d-md-block mt-4">
+                <img src="https://i.imgur.com/CzotCuC.png" width="150" height="150" />
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
+</div>
+
+<div class="table-responsive ">
+    <table class="table   table-hover table-condensed">
+        <thead>
+            <tr>
+                <th *ngFor="let columns of varColumns">{{columns}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+</div>

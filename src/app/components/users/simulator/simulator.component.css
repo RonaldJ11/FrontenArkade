@@ -1,0 +1,11 @@
+.sim {
+    border-radius: .4rem;
+    background-color: aliceblue;
+}
+
+table {
+    border-radius: .4rem;
+    width: 100%;
+    height: auto;
+    background-color: aliceblue;
+}
