@@ -3,10 +3,65 @@
 
 
     <mat-tab-group>
-        <mat-tab label="Usuarios">s
+        <mat-tab label="Usuarios">
+            <form action="">
+                <div class="row container mt-4">
+                    <div class="row-md-4 offset-1 col-form-label">
+                        <input class=" row-md-4 " type="text " placeholder="Identificacion ">
+                    </div>
+                    <div class="row-md-4 offset-1 col-form-label">
+                        <input class="row-md-4 " type="text " placeholder="Nombre ">
+                    </div>
+                    <div class="row-md-4 offset-1">
+                        <button class="btn btn-primary"> Buscar</button>
+                    </div>
+                    <br>
+
+                </div>
+            </form>
+
+            <table class="table mt-4">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td> <button class="btn btn-primary"> Buscar</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>@mdo</td>
+
+                        <td> <button class="btn btn-primary"> Buscar</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                        <td>@mdo</td>
+
+                        <td> <button class="btn btn-primary"> Buscar</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </mat-tab>
-        <mat-tab label="Clientes"> Clientes </mat-tab>
-        <mat-tab label="Simulador">
+        <mat-tab label="Clientes ">
+        </mat-tab>
+        <mat-tab label="Simulador ">
             <app-simulator></app-simulator>
         </mat-tab>
     </mat-tab-group>

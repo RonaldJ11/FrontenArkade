@@ -2,7 +2,7 @@
     <br>
     <h2>Tipo de credito:</h2>
     <select class="form-control form-control-lg mt-1" [(ngModel)]="typeCredit" (change)="updatePage()">
-        <option *ngFor="let typeCredit of typesCreditsList" [value]=typeCredit.name >{{typeCredit.name}}</option>
+        <option *ngFor="let typeCredit of typesCreditsList" [value]=typeCredit.name>{{typeCredit.name}}</option>
     </select>
     <hr>
     <div class="container row">
@@ -32,12 +32,7 @@
             <div class="form-group row">
                 <label for="text1" class="col-4 col-form-label">Cuota Mensual</label>
                 <div class="col-8">
-                    <input id="text1" name="text1" type="text" class="form-control" value="{{valueInstallments}}" readonly>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="offset-4 col-8">
-                    <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+                    <input id="text1" name="text1" type="text" class="form-control" value="{{valueInstallments| currency: 'USD' | lowercase}}" readonly>
                 </div>
             </div>
         </form>
@@ -59,10 +54,17 @@
                 <th *ngFor="let columns of varColumns">{{columns}}</th>
             </tr>
         </thead>
+
         <tbody>
-            <tr>
-            </tr>
-            <tr>
+            <tr *ngFor="let value of values">
+                <th>{{value.id +1}}</th>
+                <td>{{value.date}}</td>
+                <td>{{value.fdo | currency: 'USD' | lowercase}}</td>
+                <td *ngIf="value.sEnd>0">{{value.sEnd | currency: 'USD' | lowercase}}</td>
+                <td>{{value.interests | currency: 'USD' | lowercase}}</td>
+                <td>{{value.equity | currency: 'USD' | lowercase}}</td>
+                <td>{{value.fee | currency: 'USD' | lowercase}}</td>
+                <td>{{value.balance | currency: 'USD' | lowercase}}</td>
             </tr>
             <tr>
             </tr>

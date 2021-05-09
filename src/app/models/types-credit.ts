@@ -1,4 +1,4 @@
 export class TypesCredit {
-    id: number;
+    titulo:string;
     name: string;
 }
