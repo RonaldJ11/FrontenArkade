@@ -70,6 +70,7 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
       this.userList = res.body || [];
       this.valideUser();
     }, err => {
+      alert('**Error al conectar***')      
       console.log("Error Usuario", err);
     }
     );
