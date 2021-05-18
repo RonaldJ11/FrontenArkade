@@ -1,9 +1,15 @@
 <div class="margin mt-4 container">
-    <h1>Ola mundo</h1>
+    <div class="container-fluid mt-4">
+        <h1>{{userInfo.fullNames}}</h1>
+        <div class="button">
+            <button class=" btn btn-primary " (click)="logout()">Cerrar session</button>
+            <button class=" btn btn-primary " (click)="passwordUpdate('holamundo')">Cambiar Contraseña</button>
+        </div>
+    </div>
 
 
     <mat-tab-group>
-        <mat-tab label="Usuarios">
+        <mat-tab *ngIf="userInfo.typeAccount" label="Usuarios">
             <form action="">
                 <div class="row container mt-4">
                     <div class="row-md-4 offset-1 col-form-label">
@@ -13,7 +19,9 @@
                         <input class="row-md-4 " type="text " placeholder="Nombre ">
                     </div>
                     <div class="row-md-4 offset-1">
-                        <button class="btn btn-primary"> Buscar</button>
+                        <button class="btn btn-primary"> 
+                            Buscar
+                        </button>
                     </div>
                     <br>
 
@@ -24,42 +32,92 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">NickName</th>
+                        <th scope="col">N# Identificacion</th>
+                        <th scope="col">Nombres</th>
+                        <th scope="col">Tipo de Cuenta</th>
+                        <th scope="col">Activo</th>
+                        <td> Acciones</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td> <button class="btn btn-primary"> Buscar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@mdo</td>
+                    <tr *ngFor="let user of userList">
+                        <td>{{user.id}}</td>
+                        <td>{{user.nickName}}</td>
+                        <td>{{user.userIdentification}}</td>
+                        <td>{{user.fullNames}}</td>
+                        <td *ngIf="user.typeAccount"> Administrador</td>
+                        <td *ngIf="!user.typeAccount"> Cliente</td>
+                        <td *ngIf="user.active"> Activo</td>
+                        <td *ngIf="!user.active"> Inactivo</td>
+                        <td>
+                            <button class="btn" (click)="remove(''+user.id)"> 
+                            <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/WGRowfs.png" alt="" width="25" height="25">
+                        </button>
+                            <button class="btn" (click)="onSwitch(user.id)"> 
+                            <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/yyY3xeH.png" alt="" width="25" height="25">
+                        </button>
 
-                        <td> <button class="btn btn-primary"> Buscar</button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@mdo</td>
-
-                        <td> <button class="btn btn-primary"> Buscar</button></td>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </mat-tab>
-        <mat-tab label="Clientes ">
+        <mat-tab *ngIf="userInfo.typeAccount" label="Clientes ">
+
+            <form action="">
+                <div class="row container mt-4">
+                    <div class="row-md-4 offset-1 col-form-label">
+                        <input class=" row-md-4 " type="text " placeholder="Identificacion ">
+                    </div>
+                    <div class="row-md-4 offset-1 col-form-label">
+                        <input class="row-md-4 " type="text " placeholder="Nombre ">
+                    </div>
+                    <div class="row-md-4 offset-1">
+                        <button class="btn btn-primary"> 
+                            Buscar
+                        </button>
+                    </div>
+                    <br>
+
+                </div>
+            </form>
+
+            <table class="table mt-4">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombres </th>
+                        <th scope="col">N# Celular</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Genero</th>
+                        <th scope="col">email</th>
+                        <th scope="col">Fecha de Nacimiento</th>
+                        <th scope="col">tipo de associado</th>
+                        <td> Acciones</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let clients of clientList">
+                        <td>{{clients.id}}</td>
+                        <td>{{clients.names}}</td>
+                        <td>{{clients.phone_number}}</td>
+                        <td>{{clients.address}}</td>
+                        <td>{{clients.gender}}</td>
+                        <td>{{clients.email}}</td>
+                        <td>{{clients.birthday}}</td>
+                        <td>{{clients.assosiade_id}}</td>
+
+                        <td>
+                            <button class="btn" (click)="remove(''+clients.id)"> 
+                            <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/WGRowfs.png" alt="" width="25" height="25">
+                        </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
         </mat-tab>
         <mat-tab label="Simulador ">
             <app-simulator></app-simulator>

@@ -4,7 +4,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@apps":["./src/app/*"],
+      "@links":["./src/app/*"],
       "@shared":["./src/app/shared/*"],
       "@environment":["./src/environments/*"],
       "@simulator":["./src/app/simulator/*"],
