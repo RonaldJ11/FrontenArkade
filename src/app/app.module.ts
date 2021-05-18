@@ -4,15 +4,22 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
+import { CreateClientsComponent } from './components/dialog/create-clients/create-clients.component';
+import { ChanguePasswordComponent } from './components/dialog/changue-password/changue-password.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ConfirmDialogComponent,
+    CreateClientsComponent,
+    ChanguePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +28,8 @@ import { AppComponent } from './app.component';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

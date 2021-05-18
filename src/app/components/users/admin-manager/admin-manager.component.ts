@@ -7,6 +7,10 @@ import { AuthService } from '../../../auth.service';
 import { Subscription } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { IClients } from './../../../models/iclients';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './../../dialog/confirm-dialog/confirm-dialog.component';
+import { CreateClientsComponent } from './../../dialog/create-clients/create-clients.component';
+import { ChanguePasswordComponent } from './../../dialog/changue-password/changue-password.component';
 
 
 @Component({
@@ -18,6 +22,8 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
 
   userList: IUserInfo[] = [];
   clientList: IClients[]=[];
+  bodyText: string;
+
   userInfo: IUserInfo = {
     active: true,
     fullNames: '',
@@ -30,7 +36,7 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
 
 
 
-  constructor(private authService: AuthService, private router: Router, private http: HttpClient) {
+  constructor(private authService: AuthService, private router: Router, private http: HttpClient,public dialog: MatDialog) {
     this.isLogIn();
   }
 
@@ -51,6 +57,8 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.bodyText = 'This text can be updated in modal 1';
+
     let httpsHeaders: HttpHeaders = new HttpHeaders();
     const token = sessionStorage.getItem('auth_token');
     httpsHeaders = httpsHeaders.append('Authorization', 'Bearer ' + token)
@@ -92,16 +100,17 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
       }
       i++;
     }
-
   }
 
 
 
-  remove(id: string) {
+  remove(id: string , type:number) {
     let httpsHeaders: HttpHeaders = new HttpHeaders();
     const token = sessionStorage.getItem('auth_token');
     httpsHeaders = httpsHeaders.append('Authorization', 'Bearer ' + token)
 
+
+    if (type==1) {
     this.subRef$ = this.http.delete<IUserInfo[]>('https://localhost:44332/api/Users/' + id, {
       headers: httpsHeaders,
       observe: 'response'
@@ -111,7 +120,21 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
     }, err => {
       console.log("Error Eliminar  Usuario", err);
     }
+    );  
+    }else{
+      this.subRef$ = this.http.delete<IClients[]>('https://localhost:44332/api/Clients/' + id, {
+      headers: httpsHeaders,
+      observe: 'response'
+    }).subscribe(res => {
+      location.reload();
+      alert('El CLiente se ha borrado correctamente');
+    }, err => {
+      console.log("Error Eliminar  CLiente", err);
+    }
     );
+    }
+
+    
   }
 
   onSwitch(id: number) {
@@ -166,11 +189,32 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
     }
     return null;
   }
+
+
   ngOnDestroy() {
     if (this.subRef$) {
       this.subRef$.unsubscribe();
     }
   }
 
+
+  openDialogUserInfo() {
+    const dialogo1 = this.dialog.open(ConfirmDialogComponent, {});
+    dialogo1.afterClosed().subscribe(art => {
+    });
+  }
+
+  openDialogClient() {
+    const dialogo1 = this.dialog.open(CreateClientsComponent, {});
+    dialogo1.afterClosed().subscribe(art => {
+    });
+  }
+
+
+  openDialogChanguePassword() {
+    const dialogo1 = this.dialog.open(ChanguePasswordComponent, {});
+    dialogo1.afterClosed().subscribe(art => {
+    });
+  }
 
 }

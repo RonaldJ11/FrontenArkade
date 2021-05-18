@@ -1,0 +1,31 @@
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">NickName</label>
+            <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="userInfo.nickName" [ngModelOptions]="{standalone: true}" placeholder="Nombre para iniciar session">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputPassword4">Nombres Completos</label>
+            <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="userInfo.fullNames" [ngModelOptions]="{standalone: true}" placeholder="Nombres Completos">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group  col-md-6">
+            <label for="inputAddress2">Identificacion</label>
+            <input type="text" class="form-control" id="inputAddress2" [(ngModel)]="userInfo.userIdentification" [ngModelOptions]="{standalone: true}" placeholder="CC, Nit, Tarjeta de Identidad">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputState">typeAccount</label>
+            <select id="inputState" [(ngModel)]="userInfo.typeAccount" [ngModelOptions]="{standalone: true}" class="form-control">
+                <option [value]='false' selected>Cliente</option>
+                <option [value]='true'>Usuario</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <p>NOTA:Cada usuario al iniciar session podra cambiar su contraseña pero su primera contraseña sera: nickName+123</p>
+    </div>
+    <button type="submit" class="btn btn-Danger" (click)="cancelar()">Cancelar</button>
+
+    <button type="submit" class="btn btn-primary" (click)="create()">Crear</button>
+</form>

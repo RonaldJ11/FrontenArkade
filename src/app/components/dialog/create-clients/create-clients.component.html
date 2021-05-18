@@ -1,0 +1,51 @@
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Correo</label>
+            <input type="email" class="form-control" id="inputEmail4" [(ngModel)]="clientInfo.email" [ngModelOptions]="{standalone: true}" placeholder="Email">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputPassword4">Nombres Completos</label>
+            <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="clientInfo.names" [ngModelOptions]="{standalone: true}" placeholder="Nombres">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress">Direccion</label>
+        <input type="text" class="form-control" id="inputAddress" [(ngModel)]="clientInfo.address" [ngModelOptions]="{standalone: true}" placeholder="1234 Main St">
+    </div>
+    <div class="form-group">
+        <label for="inputAddress2">Genero</label>
+        <select id="inputState" [(ngModel)]="clientInfo.gender" [ngModelOptions]="{standalone: true}" class="form-control">
+            <option [value]="'Masculino'" selected>Masculino</option>
+            <option [value]="'Femenino'" >Femenino</option>
+            <option  [value]="'Desconocido'" >Prefiero no Decirlo</option>
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress">Numero de Celular</label>
+        <input type="text" class="form-control" id="inputAddress" [(ngModel)]="clientInfo.phone_number" [ngModelOptions]="{standalone: true}" placeholder="314------">
+    </div>
+    <div class="form-group">
+        <label for="inputAddress2">Fecha de Nacimiento</label>
+        <input type="date" class="form-control" id="inputAddress2" [(ngModel)]="clientInfo.birthday" [ngModelOptions]="{standalone: true}" placeholder=" Apartment, studio, or floor ">
+    </div>
+    <div class="form-row ">
+        <div class="form-group col-md-6 ">
+            <label for="inputCity ">Detalles</label>
+            <input type="text " class="form-control " id="inputDetails ">
+        </div>
+        <div class="form-group col-md-5 offset-md-1 ">
+            <label for="inputState ">Tipo de Associado</label>
+            <select id="inputState " [(ngModel)]="clientInfo.assosiade_id" [ngModelOptions]="{standalone: true}" class="form-control ">
+                <option [value]="1" selected>Cliente Principal</option>
+                <option [value]="2">No se que mas tipos hay</option>
+                <option [value]="3">sorry BBy</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group ">
+        <button type="submit " class="btn btn-primary " (click)="cancel() ">Cancelar</button>
+        <button type="submit " class="btn btn-primary " (click)="create() ">Crear</button>
+    </div>
+</form>

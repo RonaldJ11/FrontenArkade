@@ -1,32 +1,29 @@
-<div class="margin mt-4 container">
-    <div class="container-fluid mt-4">
-        <h1>{{userInfo.fullNames}}</h1>
-        <div class="button">
-            <button class=" btn btn-primary " (click)="logout()">Cerrar session</button>
-            <button class=" btn btn-primary " (click)="passwordUpdate('holamundo')">Cambiar Contraseña</button>
-        </div>
+<nav class="nav navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand">
+        <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/QJBLaRo.png" alt="" width="30" height="30">
+    </a>
+
+    <a class="navbar-brand">{{userInfo.nickName}}</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" (click)="openDialogChanguePassword()">Cambiar Contraseña <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="logout()" type="submit">Cerrar session</button>
     </div>
+</nav>
 
-
+<div class="margin mt-4 container">
     <mat-tab-group>
         <mat-tab *ngIf="userInfo.typeAccount" label="Usuarios">
-            <form action="">
-                <div class="row container mt-4">
-                    <div class="row-md-4 offset-1 col-form-label">
-                        <input class=" row-md-4 " type="text " placeholder="Identificacion ">
-                    </div>
-                    <div class="row-md-4 offset-1 col-form-label">
-                        <input class="row-md-4 " type="text " placeholder="Nombre ">
-                    </div>
-                    <div class="row-md-4 offset-1">
-                        <button class="btn btn-primary"> 
-                            Buscar
-                        </button>
-                    </div>
-                    <br>
-
-                </div>
-            </form>
+            <button class="btn" (click)="openDialogUserInfo() ">
+                <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/biLrwKM.png" alt="" width="25"
+                    height="25">
+            </button>
 
             <table class="table mt-4">
                 <thead>
@@ -51,12 +48,14 @@
                         <td *ngIf="user.active"> Activo</td>
                         <td *ngIf="!user.active"> Inactivo</td>
                         <td>
-                            <button class="btn" (click)="remove(''+user.id)"> 
-                            <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/WGRowfs.png" alt="" width="25" height="25">
-                        </button>
-                            <button class="btn" (click)="onSwitch(user.id)"> 
-                            <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/yyY3xeH.png" alt="" width="25" height="25">
-                        </button>
+                            <button class="btn" (click)="remove(''+user.id ,1) ">
+                                <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/WGRowfs.png" alt=""
+                                    width="25" height="25">
+                            </button>
+                            <button class="btn" (click)="onSwitch(user.id)">
+                                <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/yyY3xeH.png" alt=""
+                                    width="25" height="25">
+                            </button>
 
                         </td>
                     </tr>
@@ -65,23 +64,11 @@
         </mat-tab>
         <mat-tab *ngIf="userInfo.typeAccount" label="Clientes ">
 
-            <form action="">
-                <div class="row container mt-4">
-                    <div class="row-md-4 offset-1 col-form-label">
-                        <input class=" row-md-4 " type="text " placeholder="Identificacion ">
-                    </div>
-                    <div class="row-md-4 offset-1 col-form-label">
-                        <input class="row-md-4 " type="text " placeholder="Nombre ">
-                    </div>
-                    <div class="row-md-4 offset-1">
-                        <button class="btn btn-primary"> 
-                            Buscar
-                        </button>
-                    </div>
-                    <br>
+            <button class="btn" (click)="openDialogClient() ">
+                <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/biLrwKM.png" alt="" width="25"
+                    height="25">
+            </button>
 
-                </div>
-            </form>
 
             <table class="table mt-4">
                 <thead>
@@ -105,13 +92,14 @@
                         <td>{{clients.address}}</td>
                         <td>{{clients.gender}}</td>
                         <td>{{clients.email}}</td>
-                        <td>{{clients.birthday}}</td>
+                        <td>{{clients.birthday | date: 'shortDate'}}</td>
                         <td>{{clients.assosiade_id}}</td>
 
                         <td>
-                            <button class="btn" (click)="remove(''+clients.id)"> 
-                            <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/WGRowfs.png" alt="" width="25" height="25">
-                        </button>
+                            <button class="btn" (click)="remove(''+clients.id,2)">
+                                <img class="avatar" alt="Avatar Image" src="https://i.imgur.com/WGRowfs.png" alt=""
+                                    width="25" height="25">
+                            </button>
 
                         </td>
                     </tr>
@@ -123,4 +111,8 @@
             <app-simulator></app-simulator>
         </mat-tab>
     </mat-tab-group>
+
+
+
+
 </div>

@@ -13,3 +13,8 @@ textarea.text {
     font-size: 12px;
     padding: 5px;
 }
+
+.nav {
+    border: 1px solid #393939;
+    border-radius: 5px 5px 5px 5px;
+}
