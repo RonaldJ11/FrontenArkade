@@ -10,14 +10,14 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" (click)="openDialogChanguePassword()">Cambiar Contraseña <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-muted" (click)="openDialogChanguePassword()">Cambiar Contraseña <span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <button class="btn btn-outline-success my-2 my-sm-0" (click)="logout()" type="submit">Cerrar session</button>
     </div>
 </nav>
-
 <div class="margin mt-4 container">
+    <input type="text" class="forms-control" placeholder="Buscar.." [(ngModel)]="filterpost" name="filterpost" />
     <mat-tab-group>
         <mat-tab *ngIf="userInfo.typeAccount" label="Usuarios">
             <button class="btn" (click)="openDialogUserInfo() ">

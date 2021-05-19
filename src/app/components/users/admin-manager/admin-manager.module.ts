@@ -7,6 +7,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { AdminManagerRoutingModule } from './admin-manager-routing.module';
 import { AdminManagerComponent } from './admin-manager.component';
 import { SimulatorModule } from "../simulator/simulator.module";
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,6 +22,7 @@ import { SimulatorModule } from "../simulator/simulator.module";
     MatTableModule,
     MatTabsModule,
     SimulatorModule,
+    FormsModule
   ]
 })
 export class AdminManagerModule { }

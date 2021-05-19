@@ -23,7 +23,7 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
   userList: IUserInfo[] = [];
   clientList: IClients[]=[];
   bodyText: string;
-
+  filterpost:string;
   userInfo: IUserInfo = {
     active: true,
     fullNames: '',
@@ -83,6 +83,7 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
       this.clientList = res.body || [];
       this.valideUser();
     }, err => {
+      alert('*** No Hay permisos***')      
       console.log("Error Usuario", err);
     }
     );
@@ -119,6 +120,7 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
       location.reload();
       alert('El Usuario se ha borrado correctamente');
     }, err => {
+      alert('Usuario error No hay permiso por gavor reinicia la cuenta')      
       console.log("Error Eliminar  Usuario", err);
     }
     );  
@@ -217,5 +219,7 @@ export class AdminManagerComponent implements OnInit, OnDestroy {
     dialogo1.afterClosed().subscribe(art => {
     });
   }
+
+
 
 }

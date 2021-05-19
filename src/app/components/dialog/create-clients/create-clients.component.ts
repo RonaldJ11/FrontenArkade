@@ -14,6 +14,8 @@ export class CreateClientsComponent implements OnInit,OnDestroy {
 
   subRef$: Subscription | undefined;
 
+
+
   clientInfo: IClients = {
     address: 'Ninguno',
     assosiade_id: 12,
@@ -39,12 +41,11 @@ export class CreateClientsComponent implements OnInit,OnDestroy {
     console.log(this.clientInfo);
 
     let httpsHeaders: HttpHeaders = new HttpHeaders();
-
     const token = sessionStorage.getItem('auth_token');
     console.log(token);
     
     httpsHeaders = httpsHeaders.append('Authorization', 'Bearer ' + token)
-    this.subRef$ = this.http.post('https://localhost:44332/api/Clients', {
+    this.subRef$ = this.http.post<IClients>('https://localhost:44332/api/Clients', {
       names: this.clientInfo.names,
       phone_number: this.clientInfo.phone_number,
       address: this.clientInfo.address,
@@ -52,13 +53,17 @@ export class CreateClientsComponent implements OnInit,OnDestroy {
       email: this.clientInfo.email,
       birthday: "1999-11-11T00:00:00",
       associate_id:12
-    }).subscribe(res => {
+    }
+    ).subscribe(res => {
       location.reload();
       alert('El Usuario se ha Creado correctamente');
     }, err => {
       console.log("Error Editar  Usuario", err);
     }
     );
+
+  
+
   }
 
 

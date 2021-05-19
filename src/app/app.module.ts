@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { ConfirmDialogComponent } from './components/dialog/confirm-dialog/confirm-dialog.component';
 import { CreateClientsComponent } from './components/dialog/create-clients/create-clients.component';
 import { ChanguePasswordComponent } from './components/dialog/changue-password/changue-password.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ChanguePasswordComponent } from './components/dialog/changue-password/c
     ConfirmDialogComponent,
     CreateClientsComponent,
     ChanguePasswordComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

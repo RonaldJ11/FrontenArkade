@@ -46,7 +46,7 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy{
     let httpsHeaders: HttpHeaders = new HttpHeaders();
 
     const token = sessionStorage.getItem('auth_token');
-    httpsHeaders = httpsHeaders.append('Authorization', 'Bearer ' + token)
+    httpsHeaders = httpsHeaders.append('Authorization','Bearer ' + token)
     this.subRef$ = this.http.post('https://localhost:44332/api/Users/', {
       nickName: this.userInfo.nickName,
       userIdentification: this.userInfo.userIdentification,

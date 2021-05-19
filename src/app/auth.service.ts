@@ -29,9 +29,12 @@ export class AuthService {
         sessionStorage.setItem('auth_token', resp.token);
         sessionStorage.setItem('user_info',nickName);
         this.router.navigate(['admin-manager']);
-      });
+      }, resp => {
+        alert('Usuario o Contraseña Incorrecta **Error al conectar***')  
+        console.log("Error Editar  Usuario", resp);
+      })
 
-    alert('Usuario o Contraseña Incorrecta **Error al conectar***')      
+    
     }
 
   logout() {
